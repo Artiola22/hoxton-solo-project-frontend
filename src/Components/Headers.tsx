@@ -1,13 +1,21 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
-
-function Header(){
-    return(
-        
-           
-        <h1>
-            Let's Talk
-            </h1>
-            
-    )
+function Header() {
+  const [showNavigation, setShowNavigation] = useState(false);
+  return (
+    <div>
+      <h1
+        onClick={() => {
+          setShowNavigation(true);
+        }}
+        className="app-title"
+      >
+        Let's Talk
+      </h1>
+      {showNavigation ? <NavBar /> : null}
+    </div>
+  );
 }
-export default Header
+export default Header;

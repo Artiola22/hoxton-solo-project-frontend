@@ -1,17 +1,24 @@
-function Modals(){
-    return (
-        <div>
-            <div className="modal-wrapper">
-                <div className="modal-container">
-                    <div className="modal-close">
-                        <button className="close-btn">X</button>
-                        <h2>Welcome to  <b>Let's Talk</b></h2>
-                        <p>Do you have an account? If not Register</p>
-                        <p>Else Sign In</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+import { User } from "../../App";
+import Register from "./Register";
+import SignIn from "./SignIn";
+
+type Props = {
+  setModal: (value: string) => void;
+  setUser: (value: User| null) => void;
+  user: User | null;
+  modal: string;
+
+};
+function Modals({setModal, modal, user, setUser}: Props) {
+        switch (modal) {
+            case 'sign-in':
+                return <SignIn setUser={setUser} setModal={setModal}/>
+            case 'register':
+                return <Register setUser={setUser} setModal={setModal} />
+            default : 
+                return null
+  } 
+    
+ 
 }
-export default Modals
+export default Modals;
