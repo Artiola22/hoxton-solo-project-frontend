@@ -12,11 +12,15 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
+
     <div>
+      <div className="main">
       <div className="welcome-msg">Welcome to our App</div>
-      <h3>Do you have an account?</h3>
-      <p>
-        If you have 
+      </div>
+
+      <div className="last-wrapper">
+      <h3 className="intro-h3">Do you have an account?</h3>
+      
         <button onClick={() => setOpenModal(true)} className="signin-btn">
           {user !== null ? (
             <li
@@ -28,10 +32,7 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
             </li>
           ) : null}
          
-        </button>
-      </p>
-      <p>
-        Else
+        </button>|
         <button
           className="register-btn"
           onClick={() => {
@@ -40,7 +41,7 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
         >
           Register
         </button>
-      </p>
+      </div>
       {/* {openModal ? (
         <Modals
           setModal={setModal}

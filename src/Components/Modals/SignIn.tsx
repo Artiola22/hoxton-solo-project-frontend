@@ -64,7 +64,7 @@ export default function SignIn({ setUser, setModal }: Props) {
             >
               X
             </button>
-            <div>Sign in</div>
+            <div className="sign-in-form">Sign in</div>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -91,7 +91,8 @@ export default function SignIn({ setUser, setModal }: Props) {
               {error !== null ? (
                 <p className="modals-error">{error?.error}</p>
               ) : null}
-              <button type="submit" className="submit-btn" >Sign in
+              <button type="submit" className="submit-btn">
+                Sign in
               </button>
             </form>
             <p>

@@ -14,6 +14,7 @@ function Header() {
       >
         Let's Talk
       </h1>
+      <hr />
       {showNavigation ? <NavBar /> : null}
     </div>
   );
