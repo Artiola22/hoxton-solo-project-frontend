@@ -4,6 +4,7 @@ import { User } from "../../App";
 export type Props = {
   setModal: (value: string) => void;
   setUser: (value: User | null) => void;
+  user: User| null
 };
 type Data = {
   email: string;
@@ -27,14 +28,18 @@ export default function SignIn({ setUser, setModal }: Props) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({email: data.email, password: data.password}),
     })
       .then((resp) => resp.json())
       .then((data) => {
         if (data.user) {
+          // console.log("data:", data.user)
           setUser(data.user);
           localStorage.setItem("token", data.token);
           setModal("Welcome");
+          setTimeout( () => {
+            setModal('')
+          }, 2000)
         } else {
           setError(data);
         }

@@ -1,7 +1,8 @@
 import { User } from "../../App";
 import Register from "./Register";
 import SignIn from "./SignIn";
-import WelcomeUser from "./WelcomeUser";
+import Welcome from "./Welcome";
+
 
 
 type Props = {
@@ -14,11 +15,11 @@ type Props = {
 function Modals({setModal, modal, user, setUser}: Props) {
         switch (modal) {
             case 'sign-in':
-                return <SignIn setUser={setUser} setModal={setModal}/>
+                return <SignIn user={user} setUser={setUser} setModal={setModal}/>
              case 'welcome':
-                return <WelcomeUser user={user} setModal={setModal} />
+                return <Welcome user={user} setModal={setModal} />
             case 'register':
-                return <Register setUser={setUser} setModal={setModal} />
+                return <Register user={user} setUser={setUser} setModal={setModal} />
             
             default : 
                 return null

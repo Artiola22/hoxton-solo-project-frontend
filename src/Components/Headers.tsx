@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Props } from "./Modals/SignIn";
+
 import NavBar from "./NavBar";
 
-function Header() {
+
+
+function Header({setUser, setModal, user}:Props) {
   const [showNavigation, setShowNavigation] = useState(false);
+ 
   return (
-    <div>
-      <h1
-        onClick={() => {
+    <div className="header-container">
+      <h1 onClick={() => {
           setShowNavigation(true);
         }}
         className="app-title"
@@ -15,7 +18,7 @@ function Header() {
         Let's Talk
       </h1>
       <hr />
-      {showNavigation ? <NavBar /> : null}
+      {showNavigation ? <NavBar setModal={setModal} setUser={setUser} user={user}/> : null}
     </div>
   );
 }

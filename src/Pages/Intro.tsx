@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { User } from "../App";
+import Modals from "../Components/Modals/Modals";
 
 type Props = {
   setModal: (value: string) => void;
@@ -12,15 +13,13 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-
     <div>
       <div className="main">
-      <div className="welcome-msg">Welcome to our App</div>
+        <div className="welcome-msg">Welcome to our App</div>
       </div>
 
       <div className="last-wrapper">
-      <h3 className="intro-h3">Do you have an account?</h3>
-      
+        <h3 className="intro-h3">Do you have an account?</h3>
         <button onClick={() => setOpenModal(true)} className="signin-btn">
           {user !== null ? (
             <li
@@ -28,11 +27,11 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
                 setModal("sign-in");
               }}
             >
-              Sign In 
+              Sign In
             </li>
           ) : null}
-         
-        </button>|
+        </button>
+        |
         <button
           className="register-btn"
           onClick={() => {

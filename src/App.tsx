@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import Header from "./Components/Headers";
 import Modals from "./Components/Modals/Modals";
 import SignIn from "./Components/Modals/SignIn";
 import NavBar from "./Components/NavBar";
+import Conversations from "./Pages/Conversations";
 import Intro from "./Pages/Intro";
 import Messages from "./Pages/Messages";
+
 import MyContacts from "./Pages/MyContact";
 import PageNotFound from "./Pages/PageNotFound";
 import Status from "./Pages/Status";
+
+export type Props={
+  setModal: (value: string)=> void
+  user : User| null
+  setUser: (value: null)=> void
+}
 
 export type User = {
   id: number;
@@ -21,12 +29,35 @@ export type User = {
   profilePhoto?: string;
   userStatus?: string;
 };
+
+export type Message={
+  id: number
+  userId: number
+  conversationId: number
+  content: string
+  sendAt: string
+  Conversation: []
+  user: User| null
+}
+
+export type ConversationProps ={
+  id: number| undefined
+  userId: number| undefined
+  participantId: number
+  user: User| null
+  participant: User| null
+  messages: Message[]
+
+}
+
 export type setModal = (value: string) => void;
 
 function App() {
+
   const [user, setUser] = useState<User | null>(null);
   const [modal, setModal] = useState("");
 
+  
   useEffect(() => {
     if (localStorage.token) {
       fetch("http://localhost:8000/validate", {
@@ -44,9 +75,10 @@ function App() {
     }
   }, []);
 
+
   return (
     <div className="App">
-      <Header />
+      <Header setUser={setUser} user={user} setModal={setModal}/>
       <Modals modal={modal} setUser={setUser} setModal={setModal} user={user} />
       {/* <NavBar /> */}
       <Routes>
@@ -62,7 +94,8 @@ function App() {
           }
         />
         {/* <Route path='/sign-in' element={<SignIn setModal={setModal} setUser={setUser}/>}/> */}
-        <Route path="/messages" element={<Messages />} />
+        <Route path='/conversations' element={<Conversations user={user} />}/>
+        <Route path="/messages/:conversationId" element={<Messages user={user} />} />
         <Route path="/my-contacts" element={<MyContacts />} />
         <Route path="/status" element={<Status />} />
         <Route path="*" element={<PageNotFound />} />
