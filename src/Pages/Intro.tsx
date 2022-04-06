@@ -19,9 +19,10 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
       </div>
 
       <div className="last-wrapper">
+        <img src="/src/assets/Communication.jpg" alt="Communication" className="background-image" />
         <h3 className="intro-h3">Do you have an account?</h3>
         <button onClick={() => setOpenModal(true)} className="signin-btn">
-          {user !== null ? (
+          {user === null ? (
             <li
               onClick={() => {
                 setModal("sign-in");
@@ -32,6 +33,7 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
           ) : null}
         </button>
         |
+        
         <button
           className="register-btn"
           onClick={() => {

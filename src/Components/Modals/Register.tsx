@@ -11,13 +11,14 @@ export default function Register({setModal, setUser}: Props) {
         const email = e.target.email.value
         const phoneNumber = e.target.phone.value
         const password = e.target.password.value
+        const profilePhoto = e.target.profilePhoto?.value
 
         fetch('http://localhost:8000/register', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({fullName, email, phoneNumber, password})
+            body: JSON.stringify({fullName, email, phoneNumber, password, profilePhoto})
         }).then((resp) => resp.json()).then((data) =>{
             if (data.error){
                 setError('This email is already in use.')
@@ -38,6 +39,7 @@ export default function Register({setModal, setUser}: Props) {
                   <input type="email"  placeholder='Email' name='email' required/>
                   <input type="text"  placeholder='Fhone Number' name='phone' required/>
                   <input type="password"  placeholder='Password' name='password' required/>
+                  <input type="text" name="photo" placeholder='Url Photo' />
                   <button type='submit'>Register</button>
               </form>
               {

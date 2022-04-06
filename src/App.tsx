@@ -82,20 +82,25 @@ function App() {
       <Modals modal={modal} setUser={setUser} setModal={setModal} user={user} />
       {/* <NavBar /> */}
       <Routes>
+         {
+              user ?
+         
         <Route
-          path="/"
-          element={
-            <Intro
-              modal={modal}
-              setModal={setModal}
-              setUser={setUser}
-              user={user}
-            />
-          }
-        />
-        {/* <Route path='/sign-in' element={<SignIn setModal={setModal} setUser={setUser}/>}/> */}
+        path="/"
+        element={
+          <Intro
+          modal={modal}
+          setModal={setModal}
+          setUser={setUser}
+          user={user}
+          />
+        }
+        />: <Route path='/sign-in' element={<SignIn  user={user} setModal={setModal} setUser={setUser}/>}/>
+      }
+        
+        
         <Route path='/conversations' element={<Conversations user={user} />}/>
-        <Route path="/messages/:conversationId" element={<Messages user={user} />} />
+        <Route path="/messages/:conversationId" element={<Messages  user={user} />} />
         <Route path="/my-contacts" element={<MyContacts user={user} />} />
         <Route path="/status" element={<Status />} />
         <Route path="*" element={<PageNotFound />} />

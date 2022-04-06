@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ConversationProps, Message, User } from "../App";
 import TextMessage from "../Components/TextMessage";
+import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 
 type AddMessageForm = HTMLFormElement & {
   messageContent: HTMLInputElement;
@@ -55,7 +56,7 @@ function Messages({ user }: Props) {
   }, []);
   useEffect(() => {
     if (params.conversationId) {
-      fetch(`http://localhost:8000/conversations`)
+      fetch(`http://localhost:8000/conversations/${Number(params.conversationId)}`)
         .then((resp) => resp.json())
         .then((conversation) => setConversation(conversation));
     }
@@ -68,14 +69,16 @@ function Messages({ user }: Props) {
       <header className="panel"></header>
 
       <ul className="conversation-messages">
-        {getMessages.map((message) => (
+        {conversation.messages.map((message) => (
           <TextMessage
+            key={message.userId}
             message={message}
             outgoing={message.userId === user?.id}
           />
         ))}
       </ul>
       <form
+      className="message-form"
         onSubmit={(e) => {
           e.preventDefault();
           const formElement = e.target as AddMessageForm;
@@ -84,7 +87,7 @@ function Messages({ user }: Props) {
           formElement.reset();
         }}
       >
-        <input type="text" name="messageContent" />
+        <input type="text" className="message-place" name="messageContent"  placeholder="Write here..."/><SendOutlinedIcon/>
       </form>
     </div>
   );

@@ -20,7 +20,7 @@ code {
   margin: 0;
   box-sizing: border-box;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
 body {
@@ -35,11 +35,9 @@ body {
   border-radius: 10px;
   overflow: hidden;
   grid-template-rows: auto 1fr auto;
-
 }
 
 /* Header */
-
 
 .app-title {
   font-size: 60px;
@@ -52,7 +50,8 @@ body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 20px;
-  min-height: 200px;
+  /* min-height: 100px; */
+  padding: 1rem 0;
   display: grid;
   place-content: center;
 }
@@ -68,6 +67,12 @@ body {
   display: grid;
   gap: 1rem;
   padding-top: 0.5rem;
+}
+
+.background-image {
+  display: grid;
+  width: 400px;
+  height: 250px;
 }
 .last-wrapper {
   display: inline-block;
@@ -194,6 +199,7 @@ li {
 
 .ul-conversation {
   display: grid;
+
   grid-template-rows: 50px auto;
   gap: 0.6rem;
 }
@@ -207,33 +213,93 @@ li {
   border-radius: 10px;
 }
 /* My contact */
-.contact-wrapper{
+.contact-wrapper {
   display: grid;
   min-width: 400px;
   padding: 1rem;
   gap: 1rem;
 }
-.ul-contact{
+.ul-contact {
   display: grid;
   grid-template-rows: auto auto;
   gap: 0.6rem;
 }
-.list-contact{
+.list-contact {
   display: grid;
   grid-template-columns: 70px auto;
   /* justify-content: start; */
   align-items: center;
   border: 1px solid rgba(175, 172, 172, 0.534);
   border-radius: 10px;
-  box-shadow: 5px 5px rgba(98, 100, 98, 0.658) ;
+  box-shadow: 5px 5px rgba(240, 248, 240, 0.658);
 }
-.image-contact{
+
+.image-contact {
   border-radius: 50%;
   width: 70px;
-
 }
-.extra-class-list{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.extra-class-list {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: lighter;
+}
+.conversation-messages {
+  height: 400px;
+  overflow-y: scroll;
+  display: grid;
+  gap: 1rem;
+ 
+}
+
+.text-message {
+  display: grid;
+  width: 500px;
+  grid-template-columns: 150px auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 0.7rem;
+}
+
+.outgoing {
+  display: grid;
+  height: 50px;
+  grid-template-columns: 100px 150px 350px;
+  border-radius: 50%;
+  justify-items: end;
+  place-items: center;
+
+}
+
+.incoming {
+  display: grid;
+  height: 60px;
+  grid-template-columns: 300px;
+  place-content: center;
+  justify-content: start;
+  /* border: 1px solid black; */
+
+  /* background-color: rgb(98, 98, 224); */
+}
+.user-image-message {
+  display: grid;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid rgb(207, 200, 200);
+}
+/* .message-content{
+  background-color: brown;
+} */
+
+.message-form{
+  display: inline-flex;
+ 
+}
+.message-place{
+display: grid;
+place-items: center;
+justify-items: center;
+border: 3px solid grey;
+width: 400px;
+padding: 0.2rem;
+border-radius: 20px;
 }

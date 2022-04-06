@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Message, User } from "../App";
 
 type Props = {
@@ -16,7 +16,7 @@ type ConversationProps = {
 function Conversations({ user }: Props) {
   const [conversations, setConversations] = useState<ConversationProps[]>([]);
   const [currentUser, setCurrentUser] = useState<User| null>(null)
-
+ const params = useParams()
   const navigate = useNavigate()
   useEffect(() => {
     fetch("http://localhost:8000/conversations")
@@ -24,11 +24,11 @@ function Conversations({ user }: Props) {
       .then((conversations) => setConversations(conversations));
   }, []);
 
-  function logIn (user:User|null){
+  function logIn (user:User|null, conversationId: number){
     //set user in state as the current user
     setCurrentUser(user)
     //navigate to the main page
-    navigate('/messages/:conversationId')
+    navigate(`/messages/${conversationId}`)
   }
   return (
     <div className="conversation-wrapper">
@@ -36,9 +36,10 @@ function Conversations({ user }: Props) {
 
       <ul className="ul-conversation">
         {conversations.map((conversation) => (
-          <li className="conversation-list">
-            <div className="user-section" onClick={() => {logIn (user)}}>
+          <li className="conversation-list" >
+            <div className="user-section" onClick={() => {logIn(user, conversation.id)}}>
               <img
+              className="profile-photo-messages"
                 src={conversation.user?.profilePhoto}
                 alt={conversation.user?.fullName}
               />
