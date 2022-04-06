@@ -20,11 +20,13 @@ code {
   margin: 0;
   box-sizing: border-box;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 body {
   display: grid;
   place-content: center;
-  
+
   min-width: 400px;
   max-width: 600px;
   height: 80%;
@@ -32,13 +34,12 @@ body {
   border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;
-  grid-template-rows: auto  1fr auto;
+  grid-template-rows: auto 1fr auto;
+
 }
 
 /* Header */
-.header-container{
-  
-}
+
 
 .app-title {
   font-size: 60px;
@@ -54,30 +55,27 @@ body {
   min-height: 200px;
   display: grid;
   place-content: center;
-
 }
-.welcome-msg:hover{
+.welcome-msg:hover {
   transition: 0.2s;
-  color: rgb(27, 4, 4)  ;
+  color: rgb(27, 4, 4);
   font-size: 25px;
-  
 }
 
-.main{
+.main {
   width: auto;
   height: auto;
   display: grid;
   gap: 1rem;
   padding-top: 0.5rem;
-
 }
-.last-wrapper{
+.last-wrapper {
   display: inline-block;
-  grid-template-rows:  auto; 
+  grid-template-rows: auto;
   gap: 1rem;
   min-height: 100px;
 }
-li{
+li {
   list-style: none;
 }
 
@@ -88,10 +86,8 @@ li{
   -webkit-text-fill-color: transparent;
   min-height: 100px;
   font-size: 30px;
-
-  
 }
-.signin-btn:hover{
+.signin-btn:hover {
   transition: 0.2s;
   font-size: 35px;
 }
@@ -103,7 +99,7 @@ li{
   min-height: 100px;
   font-size: 30px;
 }
-.register-btn:hover{
+.register-btn:hover {
   transition: 0.2s;
   font-size: 35px;
 }
@@ -179,46 +175,65 @@ li{
   font-weight: bold;
 }
 
-.scroll-area{
+.scroll-area {
   min-height: 300px;
 }
 
 /* My Conversations */
 
-.conversation-wrapper{
+.conversation-wrapper {
   display: grid;
-  /* align-items: center; */
   min-width: 400px;
   padding: 1rem;
   gap: 1rem;
-  /* min-height: 500px; */
- 
 }
-.my-conversations{
- font-size: 20px;
- height: 30px;
- 
+.my-conversations {
+  font-size: 20px;
+  height: 30px;
 }
 
-.ul-conversation{
+.ul-conversation {
   display: grid;
   grid-template-rows: 50px auto;
-  /* width: 100px; */
   gap: 0.6rem;
- 
 }
-.conversation-list{
-  /* display: grid;
-  grid-template-rows: 50px; */
-  
- 
 
-}
-.user-section{
+.user-section {
   display: grid;
   grid-template-columns: 50px 150px;
   justify-content: start;
   align-items: center;
   border: 1px solid black;
   border-radius: 10px;
+}
+/* My contact */
+.contact-wrapper{
+  display: grid;
+  min-width: 400px;
+  padding: 1rem;
+  gap: 1rem;
+}
+.ul-contact{
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 0.6rem;
+}
+.list-contact{
+  display: grid;
+  grid-template-columns: 70px auto;
+  /* justify-content: start; */
+  align-items: center;
+  border: 1px solid rgba(175, 172, 172, 0.534);
+  border-radius: 10px;
+  box-shadow: 5px 5px rgba(98, 100, 98, 0.658) ;
+}
+.image-contact{
+  border-radius: 50%;
+  width: 70px;
+
+}
+.extra-class-list{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: lighter;
 }

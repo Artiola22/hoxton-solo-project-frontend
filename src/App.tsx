@@ -96,7 +96,7 @@ function App() {
         {/* <Route path='/sign-in' element={<SignIn setModal={setModal} setUser={setUser}/>}/> */}
         <Route path='/conversations' element={<Conversations user={user} />}/>
         <Route path="/messages/:conversationId" element={<Messages user={user} />} />
-        <Route path="/my-contacts" element={<MyContacts />} />
+        <Route path="/my-contacts" element={<MyContacts user={user} />} />
         <Route path="/status" element={<Status />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
