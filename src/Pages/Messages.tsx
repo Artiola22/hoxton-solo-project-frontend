@@ -36,7 +36,7 @@ function Messages({ user }: Props) {
       body: JSON.stringify({
         userId: user?.id,
         content: text,
-        conversationId: Number(params.conversationId),
+        conversationId: conversation?.id,
       }),
     })
       .then((resp) => resp.json())
@@ -48,19 +48,18 @@ function Messages({ user }: Props) {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:8000/messages/${Number(params.conversationId)}`)
+    fetch(`http://localhost:8000/conversation-with/${params.userId}`,{
+      headers: {
+        
+        authorization: localStorage.token
+      }
+    })
       .then((resp) => resp.json())
       .then((data) => {
-        setGetMessages(data);
+        setConversation(data);
       });
   }, []);
-  useEffect(() => {
-    if (params.conversationId) {
-      fetch(`http://localhost:8000/conversations/${Number(params.conversationId)}`)
-        .then((resp) => resp.json())
-        .then((conversation) => setConversation(conversation));
-    }
-  }, [params.conversationId]);
+  
 
   if (conversation === null) return <h1>Loading...</h1>;
 
@@ -69,6 +68,7 @@ function Messages({ user }: Props) {
       <header className="panel"></header>
 
       <ul className="conversation-messages">
+        <h4>{user?.fullName}</h4>
         {conversation.messages.map((message) => (
           <TextMessage
             key={message.userId}

@@ -19,7 +19,7 @@ export default function Welcome({setModal, user}: Props) {
             <button
               className="close-btn"
               onClick={() => {
-                setModal('');
+                setModal('welcome');
               }}
             >
               X

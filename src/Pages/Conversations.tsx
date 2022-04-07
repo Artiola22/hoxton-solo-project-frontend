@@ -24,7 +24,7 @@ function Conversations({ user }: Props) {
       .then((conversations) => setConversations(conversations));
   }, []);
 
-  function logIn (user:User|null, conversationId: number){
+  function logIn (user:User|null, conversationId: number| undefined){
     //set user in state as the current user
     setCurrentUser(user)
     //navigate to the main page

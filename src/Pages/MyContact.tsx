@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ConversationProps, User } from "../App";
 
 type Props = {
@@ -14,6 +14,7 @@ function MyContacts({user}:Props) {
   const [users, setUsers] = useState<User[]>([]);
   const [openMessages, setOpenMessages] = useState<User| null>(null);
   const navigate = useNavigate();
+  const params = useParams()
 
   useEffect(() => {
     fetch("http://localhost:8000/users")
@@ -21,16 +22,16 @@ function MyContacts({user}:Props) {
       .then((users) => setUsers(users));
   }, []);
 
-  function fromContactToMessages({user}:Props) {
+  function fromContactToMessages(user:User) {
     setOpenMessages(user);
-    navigate('/messages')
+    navigate(`/messages/${user.id}`)
   }
   return (
     <div className="contact-wrapper">
       <h3 className="my-contact">My Contact</h3>
       <ul className="ul-contact">
         {users.map((user: User) => (
-          <li className="list-contact" onClick={()=> {fromContactToMessages({user})}}>
+          <li className="list-contact" onClick={()=> {fromContactToMessages(user)}}>
             <img
               className="image-contact"
               src={user?.profilePhoto}

@@ -93,10 +93,14 @@ export default function SignIn({ setUser, setModal }: Props) {
                 name="password"
                 required
               />
+              {
+               
+
+              }
               {error !== null ? (
                 <p className="modals-error">{error?.error}</p>
               ) : null}
-              <button type="submit" className="submit-btn">
+              <button type="submit" className="submit-btn" >
                 Sign in
               </button>
             </form>

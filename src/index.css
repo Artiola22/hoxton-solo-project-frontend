@@ -255,16 +255,31 @@ li {
   display: grid;
   width: 500px;
   grid-template-columns: 150px auto;
-  border: 1px solid black;
+  
   border-radius: 20px;
-  padding: 0.7rem;
+  padding: 0.1rem;
+  /* background-color: grey; */
+  place-items: flex-start;
+  justify-items: flex-start;
+}
+.text-message .outgoing{
+  background-color: rgba(175, 248, 212, 0.527);
+  border: 1px solid rgba(117, 252, 184, 0.527);
+  border-radius: 30px;
+  place-content: center;
 }
 
+.text-message .incoming{
+  background-color: rgb(116, 159, 252);
+  border: 1px solid rgb(74, 128, 245);
+  border-radius: 30px;
+  place-content: center;
+}
 .outgoing {
   display: grid;
-  height: 50px;
-  grid-template-columns: 100px 150px 350px;
-  border-radius: 50%;
+  height: 70px;
+  grid-template-columns: 100px 100px 280px;
+  /* border-radius: 50%; */
   justify-items: end;
   place-items: center;
 
@@ -272,8 +287,9 @@ li {
 
 .incoming {
   display: grid;
-  height: 60px;
-  grid-template-columns: 300px;
+  height: auto;
+
+  grid-template-columns: 150px 300px;
   place-content: center;
   justify-content: start;
   /* border: 1px solid black; */
@@ -284,6 +300,7 @@ li {
   display: grid;
   width: 40px;
   border-radius: 50%;
+  place-content: center ;
   border: 1px solid rgb(207, 200, 200);
 }
 /* .message-content{

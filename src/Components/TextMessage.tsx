@@ -24,12 +24,13 @@ function TextMessage({message, outgoing}: MessageProps){
     
     return (
         <div className="text-message">
+          <span>{message.sendAt}</span>
             <div className={outgoing? 'outgoing' : 'incoming'}>
                 <div className="outgoing-class"></div>
                 <div className="incoming-class"></div>
           <img className="user-image-message" src={message.user?.profilePhoto} alt="" />
           <div>{message.content} </div>
-          {/* <span>{message.sendAt}</span> */}
+ 
           </div>
           {/* {
               users?.map(user => 
