@@ -4,7 +4,7 @@ import { User } from "../../App";
 export type Props = {
   setModal: (value: string) => void;
   setUser: (value: User | null) => void;
-  user: User| null
+  user: User | null;
 };
 type Data = {
   email: string;
@@ -28,7 +28,7 @@ export default function SignIn({ setUser, setModal }: Props) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({email: data.email, password: data.password}),
+      body: JSON.stringify({ email: data.email, password: data.password }),
     })
       .then((resp) => resp.json())
       .then((data) => {
@@ -37,9 +37,9 @@ export default function SignIn({ setUser, setModal }: Props) {
           setUser(data.user);
           localStorage.setItem("token", data.token);
           setModal("Welcome");
-          setTimeout( () => {
-            setModal('')
-          }, 2000)
+          setTimeout(() => {
+            setModal("");
+          }, 2000);
         } else {
           setError(data);
         }
@@ -93,14 +93,11 @@ export default function SignIn({ setUser, setModal }: Props) {
                 name="password"
                 required
               />
-              {
-               
-
-              }
+              {}
               {error !== null ? (
                 <p className="modals-error">{error?.error}</p>
               ) : null}
-              <button type="submit" className="submit-btn" >
+              <button type="submit" className="submit-btn">
                 Sign in
               </button>
             </form>
@@ -110,7 +107,7 @@ export default function SignIn({ setUser, setModal }: Props) {
                 onClick={() => {
                   setModal("register");
                 }}
-              >
+             className="register">
                 Register
               </span>
             </p>

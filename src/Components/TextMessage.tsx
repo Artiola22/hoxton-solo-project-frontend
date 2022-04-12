@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+
 import { ConversationProps, User } from "../App"
 import { MessageProps } from "../Pages/Messages"
 
@@ -14,24 +14,22 @@ type Message={
     user: User
 }
 function TextMessage({message, outgoing}: MessageProps){
-    // const [users, setUsers] = useState<User[]| null>([])
-    // useEffect(() => {
-    //     fetch('http://localhost:8000/users').then(resp=> resp.json())
-    //     .then(users=> setUsers(users))
-    // }, [])
     
-    
+
     
     return (
         <div className="text-message">
-          <span>{message.sendAt}</span>
+          {/* <span>{message.sendAt}</span> */}
             <div className={outgoing? 'outgoing' : 'incoming'}>
-                <div className="outgoing-class"></div>
-                <div className="incoming-class"></div>
-          <img className="user-image-message" src={message.user?.profilePhoto} alt="" />
-          <div>{message.content} </div>
+                {/* <div className="outgoing-class"></div>
+                <div className="incoming-class"></div> */}
+          
+          {/* <img className="user-image-message" src={message.user?.profilePhoto} alt={message.user?.profilePhoto} /> */}
+          <div className="message-content">{message.content}</div>
  
           </div>
+
+          
           {/* {
               users?.map(user => 
               <li className={outgoing? 'outgoing' : 'incoming'}>

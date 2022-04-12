@@ -37,7 +37,7 @@ export default function Register({setModal, setUser}: Props) {
               <form onSubmit={handleSubmit}>
                   <input type="text"  placeholder='Full Name' name='fullName' required/>
                   <input type="email"  placeholder='Email' name='email' required/>
-                  <input type="text"  placeholder='Fhone Number' name='phone' required/>
+                  <input type="text"  placeholder='Phone Number' name='phone' required/>
                   <input type="password"  placeholder='Password' name='password' required/>
                   <input type="text" name="photo" placeholder='Url Photo' />
                   <button type='submit'>Register</button>
@@ -46,7 +46,7 @@ export default function Register({setModal, setUser}: Props) {
                   error !== ''? <p className='modals-error'>{error}</p>: null
               }
               <p>Already have an account?
-                  <span onClick={() => {setModal('sign-in')}}>Sign In</span>
+                  <span onClick={() => {setModal('sign-in')}} className="signin">Sign In</span>
               </p>
           </div>
     

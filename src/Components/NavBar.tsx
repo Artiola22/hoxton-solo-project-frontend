@@ -17,31 +17,28 @@ function NavBar({ setUser, setModal, user }: Props) {
   }
   return (
     <div className="navbar">
-      <ul className="nav-list">
+      <ul className="navbar-ul" >
         {
-          user === null?  <h3>Sign in please!</h3> : (
-          <div>
-        <li>
+          user === null?  <h3 className="sig-in-message">Sign in please!</h3> : (
+          <div className="nav-list">
+        <li className="navbar-link">
           <Link to="/conversations">Conversations</Link>
         </li>
         {/* <li>
           <Link to="/messages">Messages</Link>
         </li> */}
-        <li>
+        <li className="navbar-link">
           <Link to="/my-contacts">My Contacts</Link>
-        </li>
-        <li>
-          <Link to="/status">Status</Link>
         </li>
         </div>
         )
         }
        
         {user === null ? (
-          <li onClick={() => setModal("sign-in")}>Sign In</li>
+          <li onClick={() => setModal("sign-in")} className="signin-btn">Sign In</li>
         ) : null}
         {user === null ? (
-          <li onClick={() => setModal("register")}>Register</li>
+          <li onClick={() => setModal("register")} className="register-btn">Register</li>
         ) : (
           <select
             onChange={(e) => {

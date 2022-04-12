@@ -22,6 +22,7 @@ code {
 }
 html {
   scroll-behavior: smooth;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body {
   display: grid;
@@ -80,6 +81,36 @@ body {
   gap: 1rem;
   min-height: 100px;
 }
+
+.navbar-link a{
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+.navbar-ul{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.navbar {
+  display: grid;
+  width: 500px;
+}
+.nav-list {
+  display: grid;
+  grid-auto-flow: column;
+  place-content: center;
+  gap: 2rem;
+  list-style: none;
+  
+  border: 1px solid black;
+  /* margin: 0 4rem; */
+}
+.sig-in-message{
+  color: red;
+}
 li {
   list-style: none;
 }
@@ -90,7 +121,7 @@ li {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   min-height: 100px;
-  font-size: 30px;
+  font-size: 20px;
 }
 .signin-btn:hover {
   transition: 0.2s;
@@ -102,23 +133,19 @@ li {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   min-height: 100px;
-  font-size: 30px;
+  font-size: 20px;
 }
 .register-btn:hover {
   transition: 0.2s;
   font-size: 35px;
 }
-.navbar {
-  display: grid;
+.register{
+  font-weight: bold;
+  color: rgb(2, 2, 134);
 }
-.nav-list {
-  display: grid;
-  grid-auto-flow: column;
-  place-content: center;
-  gap: 2rem;
-  list-style: none;
-  border: 1px solid black;
-  /* margin: 0 4rem; */
+.signin{
+  font-weight: bold;
+  color: rgb(2, 2, 134);
 }
 
 /* MODALS */
@@ -191,6 +218,8 @@ li {
   min-width: 400px;
   padding: 1rem;
   gap: 1rem;
+  height: 400px;
+  overflow-y: scroll;
 }
 .my-conversations {
   font-size: 20px;
@@ -218,6 +247,8 @@ li {
   min-width: 400px;
   padding: 1rem;
   gap: 1rem;
+  height: 400px;
+  overflow-y: scroll;
 }
 .ul-contact {
   display: grid;
@@ -253,9 +284,9 @@ li {
 
 .text-message {
   display: grid;
-  width: 500px;
+  width: auto;
+  /* height: auto; */
   grid-template-columns: 150px auto;
-  
   border-radius: 20px;
   padding: 0.1rem;
   /* background-color: grey; */
@@ -266,6 +297,8 @@ li {
   background-color: rgba(175, 248, 212, 0.527);
   border: 1px solid rgba(117, 252, 184, 0.527);
   border-radius: 30px;
+  display: grid;
+  height: auto;
   place-content: center;
 }
 
@@ -273,12 +306,14 @@ li {
   background-color: rgb(116, 159, 252);
   border: 1px solid rgb(74, 128, 245);
   border-radius: 30px;
+  display: grid;
+  height: auto;
   place-content: center;
 }
 .outgoing {
   display: grid;
   height: 70px;
-  grid-template-columns: 100px 100px 280px;
+  grid-template-columns: 100px 200px 200px;
   /* border-radius: 50%; */
   justify-items: end;
   place-items: center;
@@ -289,7 +324,7 @@ li {
   display: grid;
   height: auto;
 
-  grid-template-columns: 150px 300px;
+  grid-template-columns: 150px 200px;
   place-content: center;
   justify-content: start;
   /* border: 1px solid black; */
@@ -299,13 +334,12 @@ li {
 .user-image-message {
   display: grid;
   width: 40px;
+  height: 40px;
   border-radius: 50%;
   place-content: center ;
   border: 1px solid rgb(207, 200, 200);
 }
-/* .message-content{
-  background-color: brown;
-} */
+
 
 .message-form{
   display: inline-flex;

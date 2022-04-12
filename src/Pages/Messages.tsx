@@ -22,7 +22,7 @@ function Messages({ user }: Props) {
   const [conversation, setConversation] = useState<ConversationProps | null>(
     null
   );
-  const [getMessages, setGetMessages] = useState<Message[]>([]);
+ console.log(user , "this the user")
   //Params represent conversation id
   const params = useParams();
 
@@ -39,16 +39,10 @@ function Messages({ user }: Props) {
         conversationId: conversation?.id,
       }),
     })
-      .then((resp) => resp.json())
-      .then((newMessage) => {
-        const currentCopyMessage = JSON.parse(JSON.stringify(getMessages));
-        currentCopyMessage.push(newMessage);
-        setGetMessages(currentCopyMessage);
-      });
+      
   }
-
-  useEffect(() => {
-    fetch(`http://localhost:8000/conversation-with/${params.userId}`,{
+function getConversation(){
+  fetch(`http://localhost:8000/conversation-with/${params.userId}`,{
       headers: {
         
         authorization: localStorage.token
@@ -58,17 +52,29 @@ function Messages({ user }: Props) {
       .then((data) => {
         setConversation(data);
       });
+}
+  useEffect(() => {
+    getConversation()
+  const intervalId = setInterval(getConversation, 1000)
+  return ()=>{clearInterval(intervalId)}
   }, []);
   
 
   if (conversation === null) return <h1>Loading...</h1>;
+console.log(user)
+// console.log(conversation.user)
 
+console.log( "here you are",user, conversation )
+
+// const otherPersonFullName = user.participants.find(participant => participant.id !== user?.id)
+// console.log(otherPersonFullName)
   return (
     <div className="conversation">
       <header className="panel"></header>
 
       <ul className="conversation-messages">
-        <h4>{user?.fullName}</h4>
+        {/* <h4>{ user?.id === conversation.user?.id ? conversation.participant?.fullName : user?.fullName 
+          }</h4> */}
         {conversation.messages.map((message) => (
           <TextMessage
             key={message.userId}

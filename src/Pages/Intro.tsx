@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { User } from "../App";
-import Modals from "../Components/Modals/Modals";
 
 type Props = {
   setModal: (value: string) => void;
@@ -19,7 +18,11 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
       </div>
 
       <div className="last-wrapper">
-        <img src="/src/assets/Communication.jpg" alt="Communication" className="background-image" />
+        <img
+          src="/src/assets/Communication.jpg"
+          alt="Communication"
+          className="background-image"
+        />
         {/* <h3 className="intro-h3">Do you have an account?</h3> */}
         <button onClick={() => setOpenModal(true)} className="signin-btn">
           {user == null ? (
@@ -30,34 +33,19 @@ export default function Intro({ user, setModal, setUser, modal }: Props) {
             >
               Sign In
             </li>
-           ) : null}
-           
-           
+          ) : null}
         </button>
-        
-        |
-        
-        {
-             user === null ? (
-        <button
-          className="register-btn"
-          onClick={() => {
-            setModal("register");
-          }}
-        >
-          Register
-        </button>): null}
+        {user === null ? (
+          <button
+            className="register-btn"
+            onClick={() => {
+              setModal("register");
+            }}
+          >
+            Register
+          </button>
+        ) : null}
       </div>
-     
-      {/* {openModal ? (
-        <Modals
-          setModal={setModal}
-          setUser={setUser}
-          user={user}
-          modal={modal}
-        />
-      ) : null} */}
     </div>
-    
   );
 }
